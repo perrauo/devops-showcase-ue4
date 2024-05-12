@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{2BC8CA4A-41C6-3285-F575-8FB66F0FF0AF}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "DevopsShowcase",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
