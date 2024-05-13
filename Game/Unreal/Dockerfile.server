@@ -3,12 +3,20 @@ FROM adamrehn/ue4-full:custom AS builder
 COPY --chown=ue4:ue4 . /tmp/project
 
 WORKDIR /tmp/project
-RUN ue4 package Development -server -noclient
+# RUN ue4 package Development -server -noclient
+RUN /home/ue4/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh BuildCookRun \
+	-clientconfig=Development -serverconfig=Development \
+	-project=/tmp/project/DevopsShowcase.uproject \
+	-utf8output -nodebuginfo -noP4 -cook -build -stage -prereqs -pak -archive \
+	-archivedirectory=/tmp/project/dist \
+	-platform=Linux -server -noclient
 
+RUN ls -l
 FROM adamrehn/ue4-runtime:latest
+
 COPY --from=builder --chown=ue4:ue4 /tmp/project/dist/LinuxServer /home/ue4/project
 
 EXPOSE 7777/udp
 EXPOSE 7777/tcp
 
-ENTRYPOINT ["/home/ue4/project/DevopsShowcaseServer.sh"/ "-log"]
+ENTRYPOINT ["/home/ue4/project/DevopsShowcaseServer.sh", "-log"]
