@@ -5,7 +5,7 @@ The goal of this project was to demonstrate usage of Instana to monitor irregula
 The steps are based on the tutorial series by trashart
 https://www.youtube.com/watch?v=vWfWjbOIqMo
 
-![](/server.gif)
+![](https://github.com/perrauo/devops-showcase-ue4/blob/main/server.gif)
 
 ![](/instana.png)
 
